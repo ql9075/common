@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+    .wrapper{
+        width: 800px;
+        margin: 50px auto;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="my_addressSelect"  data-data="{my_province:'四川省',my_city:'成都市',my_subbranch:'成都银行高新支行'}" >
+            <select name="my_province" id="my_province"  >
+                <option value="" >请选择省</option>
+            </select>
+            <div></div>
+            <select name="my_city" id="my_city"  >
+                <option value="" >请选择市</option>
+                <option value="1">成都市</option>
+            </select>
+            <select name="my_subbranch" id="my_subbranch"  >
+                <option value="" >请选择支行名称</option>
+                <option value="1">成都银行</option>
+            </select>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery1.7.2.js"></script>
+    <script type="text/javascript" src="js/select-address.js"></script>
+     <script type="text/javascript">
+
+            $(function(){
+
+
+                $('#my_addressSelect').selectAddress({
+                    isSetFirst : true,
+                    firstData : {
+                        "1":"四川省",
+                        "2":"河南省",
+                        "3":"湖南省"
+                    },
+                    url:'respsonse.htm',
+                    storeData:function( target ){
+                        return false;
+                        if(  $( target ).data('data') ){
+                            return{
+                                "my_province":"四川省",
+                                "my_city":"成都市",
+                                "my_subbranch":"成都银行高新支行"
+                            }
+                        }else{
+                            return false;
+                        }
+                    },
+                    setRequestCallback:function( _select ){
+
+                        var _self = $( _select ) ;
+
+                        return {
+                            addressValue : _self.find('option:selected').val() , //选中value
+                            addressName  : _self.attr('name') ,  //当前select name
+                            bank         : '_bank'
+                        }
+                    }
+                })
+
+            })
+    </script>
+
+</body>
+</html>
