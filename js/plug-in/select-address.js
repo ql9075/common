@@ -1,7 +1,7 @@
-/*  
+/*
  *  404Nan  by  2015-2-9
  *  下拉联动选择插件
- */ 
+ */
 ;(function($,window){
 
     $.fn.selectAddress = function( opt ){
@@ -69,8 +69,8 @@
 
         init:function(){
 
-            var _this = this , 
-                _self = $( this.target ) 
+            var _this = this ,
+                _self = $( this.target )
             ;
 
             _this.selects = _self.find('select') ;
@@ -82,6 +82,9 @@
                 throw new Error("数据不足!");
                 return false;
             }
+
+            // 解决ie8 默认不执行的bug，利用事件唤醒
+            $(window).scrollTop(0,0);
 
             //初始化触发事件
             _this.trigger();
@@ -99,7 +102,7 @@
 
         },
         /**
-         *  初始加载第一个select数据 
+         *  初始加载第一个select数据
          */
         loadFirstData:function(){
 
@@ -116,7 +119,7 @@
 
                 return true ;
             }else if( !_this.option.isSetFirst && _this._firstSelect.find('option').length > 2 ){
-                
+
                 return true ;
             }else if( !_this.option.isSetFirst && _this._firstSelect.find('option').length <= 1 ){
                 _this.getData();
@@ -139,7 +142,7 @@
         setstoreData:function( storelist , arr  ){
 
              var _arrs =  arr || [].slice.call( this.selects ) ,
-                _currSelect = _arrs[0] 
+                _currSelect = _arrs[0]
             ;
             this.getData( _currSelect , _arrs , storelist );
         },
@@ -162,8 +165,8 @@
                         var _self = $(this);
 
                         if( $.trim( storelist[key] ) ==  $.trim( _self.text() ) ){
-                   
-                            _self.attr('selected',true); 
+
+                            _self.attr('selected',true);
                             console.log(_self)
                             _this.setstoreData( storelist , _arr )
                             return;
@@ -185,12 +188,12 @@
         },
         change:function(){
             var _this = this ;
-            
+
             this.selects.change(function(){
                 var _self = $(this) ;
 
                 _this.sDisabled( _self );
-                
+
                 if( _self.find('option:selected').val() !== ('' && '0')  &&  ( _self[0]._index !== (_this.selectLength - 1) ) ){
 
                     _this.getData( _self );
@@ -199,8 +202,8 @@
             });
         },
         getData:function( target , arr , storelist ){
-        
-            var _this = this , 
+
+            var _this = this ,
                 //如果存在目标对象就给后面兄弟元素渲染数据，反之给第一个渲染
                 _target = target ? $($( target ).nextAll('select')[0])  : _this._firstSelect ,
                 _flag = target ? true : false ,
@@ -208,7 +211,7 @@
                     value: _target.find('option:first').val(),
                     text : _target.find('option:first').text()
                 } ,
-                _arrs =  arr || [].slice.call( this.selects ) 
+                _arrs =  arr || [].slice.call( this.selects )
             ;
 
             console.log(target,_target)
@@ -253,12 +256,12 @@
                     _this.htmlRender( target , _default , _data );
 
                     _this.option.success && _this.option.success.call(this, $( this.target ) )
-        
+
                     if( _arrs && _arrs.length > 0 ){
                         _arrs.shift();
                        // _this.setstoreData( storelist , _arrs , target );
                     }
-                    
+
                     if( storelist  ){
                         _this.selectdFn( storelist , target ,_arrs);
                     }else if( !_flag && !!_this.option.storeData( $( this.target ) ) ){
@@ -271,12 +274,12 @@
         sDefault:function( target ){
             return {
                 value : $( target ).find('option:first').val() ,
-                text  : $( target ).find('option:first').text() 
+                text  : $( target ).find('option:first').text()
             }
         },
         /*禁用选项*/
         sDisabled:function( target ){
-           
+
            var _target = target.nextAll(),
                _this = this
            ;
@@ -287,7 +290,7 @@
         htmlClear:function( targets ){
             var _this = this ;
             $( targets ).each(function(){
-                var _self = $(this) , 
+                var _self = $(this) ,
                     _default = _this.sDefault( _self )
                 ;
                 _this.htmlRender( _self , _default );
