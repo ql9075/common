@@ -133,7 +133,7 @@
             var _address = this.option.storeData( $( this.target ) ) ;
 
             if( !!_address ){// 如果存在已填地址，就显示出来
-
+                this._address = true;
                 this.selectdFn( _address , $(this.selects[0]) ) //初始化第一个
 
                // this.setstoreData( _address );
@@ -167,7 +167,10 @@
                         if( $.trim( storelist[key] ) ==  $.trim( _self.text() ) ){
 
                             _self.attr('selected',true);
-                            console.log(_self)
+                           //IE8默认不选中
+                           if(_this._address){
+                             $(window).scrollTop(0,0);
+                            }
                             _this.setstoreData( storelist , _arr )
                             return;
                         }
