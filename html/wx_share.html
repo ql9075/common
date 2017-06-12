@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>lottery</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+</head>
+<body>
+
+
+ <h1>test</h1>
+
+	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<!--<script type="text/javascript" src="http://pux.wangyin.com/404nan/js/common.js"></script>
+	<script type="text/javascript" src="http://pux.wangyin.com/404nan/js/wx-sdk.js"></script>-->
+
+	<script type="text/javascript" src="js/m-public/common.js"></script>
+	<script type="text/javascript" src="js/m-public/wx-sdk.js"></script>
+
+	<script type="text/javascript">
+	 window.wxParam = {
+	 	appid:'',
+	 	timestamp:'',
+	 	noncestr:'',
+	 	signature:'',
+	 	link:window.location.href,
+	 	title:'这是一个测试地址',
+	 	desc:'这是一个测试地址',
+	 	imgUrl:'',
+	 }
+
+	 _D().ready(function(){
+	 	//https://m.wangyin.com/open/ticketSignature
+
+	 	//http://pux.wangyin.com/weixin/api.php?appId=wx344c2d5033f18fb2&appSecret=3a1e8d5b31474dc4065c0c14b72a8c59&callback=callbackFn&url=http://baidu.com
+
+	 	wxsdk({
+	 		debug:true,
+	 		type:'jsonp',//可选
+	 		jsonp:{//jsonp 必要数据
+	 			name:'callbackFn',
+	 			isEncode:true,
+	 			server:'https://m.jdpay.com/open/ticketSignature',
+	 			fn:function(data){//默认this指向当前对象 ，后面也是
+	 				var r = data.resultData;
+	 				this.params.appid = r.appId;
+			 		this.params.noncestr = r.nonceStr;
+			 		this.params.signature = r.signature;
+			 		this.params.timestamp = r.timestamp;
+	 			}
+	 		},
+	 		//微信初始化后 回调 , 可选
+	 		callback:function(){},
+	 		//直接调用分享 可选
+	 		shareData:{
+	 			title: wxParam.title,
+				desc: wxParam.desc,
+				link: wxParam.link,
+				imgUrl: wxParam.imgUrl,
+				success : function(){
+				  alert('已分享');
+				},
+				cancel : function(){
+				  alert('取消了');
+				}
+	 		}
+	 	});
+
+
+	 	/*G.loader({	
+	 		name:'callbackFn',
+	 		request:function(name){
+	 			var _search = window.location.search == ''? '' :  '&'+window.location.search.split('?')[1] ,
+	 				_url = encodeURIComponent(  window.location.href )
+	 			;
+
+	 			wxParam.link = _url;
+
+	 			G.jsonp({
+	 				server:'https://m.jdpay.com/open/ticketSignature',
+	 				url:_url,
+	 				callbackFn:name
+	 			})
+	 		},
+	 		callback:function(data){
+	 			var r = data; // product data.resultData
+	 			r = r.resultData;
+	 			console.log(r)
+	 			
+			 		wxParam.appid = r.appId;
+			 		wxParam.noncestr = r.nonceStr;
+			 		wxParam.signature = r.signature;
+			 		wxParam.timestamp = r.timestamp;
+			 	
+
+	 			//alert( wxParam.appid)
+	 			//初始化微信参数;
+			 	wxsdk.init({
+					debug : true ,
+					appid : wxParam.appid ,
+					timestamp : wxParam.timestamp,
+					noncestr : wxParam.noncestr,
+					signature : wxParam.signature,
+					callback : function(){
+					    // alert('初始化成功');
+					    //需要在这里配置默认分享的活动地址
+					    
+					    this.share({
+							title: wxParam.title,
+							desc: wxParam.desc,
+							link: wxParam.link,
+							imgUrl: wxParam.imgUrl,
+							success : function(){
+							  alert('已分享');
+							},
+							cancel : function(){
+							  alert('取消了');
+							}
+					    });
+					}
+				});
+	 		}
+	 	});*/
+
+	 	
+
+	 });
+
+
+
+
+	</script>
+
+</body>
+</html>

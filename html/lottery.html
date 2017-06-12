@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+	<meta charset="UTF-8">
+	<title>gaojijin app</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script type="text/javascript">
+		var w_url = {
+				lottery:'/respsonse.htm',
+				getList:'/respsonse2.htm'
+			},
+
+			w_share = {
+				url:'',
+				webTitle:'',
+				webDesc:''
+			}
+		;
+
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="lottery-page">
+			<section class="top_box">
+					<img src="img/banner_bk.jpg" />
+					<div class="share_box">
+						<p class="share_tips">你有<b>5次</b>抽奖机会，分享能增加抽奖机会哦</p>
+						<a class="share_btn">
+							<span>分享活动</span>
+						</a>
+					</div>
+			</section>
+			<section class="lottery-box-wrapper" >
+				<img src="img/tent.png" />
+				<div  class="flexbox-container">
+					<div id="lottery-box" class="flexbox">
+						<section>
+							<div class="lottery-unit lottery-unit-1" data-number="1" data-name="iphone6" >
+								<img src="img/prizeItem1.png" />
+							</div>
+							<div class="lottery-unit lottery-unit-8" data-number="8" data-name="daijinquan">
+								<img src="img/prizeItem8.png" />
+							</div>
+							<div class="lottery-unit lottery-unit-7" data-number="7" data-name="tengxun" >
+								<img src="img/prizeItem7.png" />
+							</div>
+						</section>
+						<section>
+							<div class="lottery-unit lottery-unit-2" data-number="2" data-name="weibolu">
+								<img src="img/prizeItem2.png" />
+							</div>
+							<div class="lottery-click">抽奖</div>
+							<div class="lottery-unit lottery-unit-6" data-number="6" data-name="ipadmini">
+								<img src="img/prizeItem6.png" />
+							</div>	
+						</section>
+						<section>
+							<div class="lottery-unit lottery-unit-3" data-number="3" data-name="cashbonus">
+								<img src="img/prizeItem3.png" />
+							</div>
+							<div class="lottery-unit lottery-unit-4" data-number="4" data-name="haier">
+								<img src="img/prizeItem4.png" />
+							</div>
+							<div class="lottery-unit lottery-unit-5" data-number="5" data-name="lvyou">
+								<img src="img/prizeItem5.png" />
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+			<section >
+				<div class="J_scrollInfo listDroll">
+				<!-- 	<ul >
+						<li>138****1234 获得了 1.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 2.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 3.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 4.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 5.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 6.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 7.8元网银钱包现金红包！</li>
+						<li>138****1234 获得了 8.8元网银钱包现金红包！</li>
+					</ul> -->
+				</div>
+			</section>
+			<section class="prize_item_box">
+				<img src="img/prize_title.png">
+				<ul class="prize_item">
+					<li>
+						<div class="prizeFlex pic">
+							<img src="img/prizeItem3.png" >
+						</div>
+						<div class="prizeFlex prize_info">
+							<strong>现金红包</strong>
+							<time>领取时间：2015.5.01</time>
+						</div>
+						<div class="prizeFlex">
+							<a class="share_prize">分享给小伙伴</a>
+						</div>
+					</li>
+					<li>
+						<div class="prizeFlex pic">
+							<img src="img/prizeItem1.png" >
+						</div>
+						<div class="prizeFlex prize_info">
+							<strong>iphone6一部</strong>
+							<time>领取时间：2015.5.01</time>
+						</div>
+						<div class="prizeFlex">
+							<a class="share_prize getprize">领取奖品</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<div class="pop_Cont" style="display: none;">
+		<div class="pop_pic" >
+		</div>
+		<p class="pop_top_text"></p>
+		<div class="popa">
+			如何领取：X元已打入你的账户XXXX，请查看你的账户余额！
+		</div>
+		<a class="continue pop_btn" >继续抽奖</a>
+		<a class="share pop_btn" >分享给小伙伴</a>
+		<a class="gotit pop_btn" >知道了</a>
+		<a class="close pop_btn" >关闭</a>
+	</div>
+	<script type="text/javascript" src="js/lib/zepto.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
